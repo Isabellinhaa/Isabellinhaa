@@ -3,7 +3,6 @@ name: Generate Snake Animation
 on:
   schedule:
     - cron: "0 0 * * *"  # Atualiza diariamente
-
   workflow_dispatch:  # Permite rodar manualmente
 
 jobs:
@@ -11,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout do repositório
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Gerar animação da cobrinha
         uses: Platane/snk@master
@@ -20,13 +19,13 @@ jobs:
           outputs: dist/github-contribution-grid-snake.svg
 
       - name: Salvar artefato da cobrinha
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4  # Atualizado para v4
         with:
           name: snake-animation
           path: dist/github-contribution-grid-snake.svg
 
       - name: Publicar no branch 'output'
-        uses: crazy-max/ghaction-github-pages@v3
+        uses: crazy-max/ghaction-github-pages@v4  # Atualizado para v4
         with:
           target_branch: output
           build_dir: dist
